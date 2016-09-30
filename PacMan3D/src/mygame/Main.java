@@ -21,6 +21,10 @@ public class Main extends SimpleApplication {
     
     Level level;
     
+    Level[] levels;
+    
+    public static Level activeLevel;
+    
     public static Player player;
     
     public static Camera mainCamera;    
@@ -33,9 +37,7 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() 
-    {
-        level = new Level(1, 12, 12, this.rootNode, this.assetManager);
-        
+    {   
         initScene();
         
         mainCamera = this.getCamera();
@@ -50,6 +52,12 @@ public class Main extends SimpleApplication {
     public void initScene()
     {
              
+        levels = new Level[1];
+        
+        levels[0] = new Level(1, 12, 12, this.rootNode, this.assetManager);
+        
+        Main.activeLevel = levels[0];
+        
         AmbientLight ambient = new AmbientLight();
         ambient.setColor(ColorRGBA.White);
         rootNode.addLight(ambient); 
